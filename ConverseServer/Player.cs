@@ -16,6 +16,8 @@ namespace Server
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC;
         private bool[] inputs;
 
+        public int animatorState;
+
         public Player(int _id, string _username, Vector3 _spawnPosition)
         {
             id = _id;
@@ -55,7 +57,7 @@ namespace Server
 
             Vector3 moveDirection = right * _inputDirection.X + forward * _inputDirection.Y;
 
-            // position += moveDirection * moveSpeed;
+            //position += moveDirection * moveSpeed;
 
             ServerSend.PlayerPosition(this);
             ServerSend.PlayerRotation(this);
@@ -63,11 +65,12 @@ namespace Server
 
 
 
-        public void SetInputs(bool[] _inputs, Quaternion _rotation,Vector3 _position)
+        public void SetInputs(bool[] _inputs, Quaternion _rotation,Vector3 _position,int _animatorState)
         {
             inputs = _inputs;
             rotation = _rotation;
             position = _position;
+            animatorState = _animatorState;
         }
     }
 }

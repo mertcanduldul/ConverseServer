@@ -94,8 +94,9 @@ namespace Server
             {
                 _packet.Write(_player.id);
                 _packet.Write(_player.position);
+                _packet.Write(_player.animatorState);
 
-                SendUDPDataToAll(_packet);
+                SendUDPDataToAll(_player.id, _packet);
             }
         }
 
@@ -108,6 +109,17 @@ namespace Server
 
                 SendUDPDataToAll(_player.id, _packet);
 
+            }
+        }
+
+        public static void SendMessage(string _username,string _message)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.message))
+            {
+                _packet.Write(_username);
+                _packet.Write(_message);
+
+                SendUDPDataToAll(_packet);
             }
         }
 

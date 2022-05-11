@@ -30,9 +30,19 @@ namespace Server
             }
             Quaternion rotation = _packet.ReadQuaternion();
             Vector3 position = _packet.ReadVector3();
+            int animatorState = _packet.ReadInt();
 
-            Server.clients[_fromClient].player.SetInputs(_inputs, rotation, position);
+            Server.clients[_fromClient].player.SetInputs(_inputs, rotation,position,animatorState);
+        }
+
+        public static void ReadMessageFromClient(int _fromClient, Packet _packet)
+        {
+            string username = _packet.ReadString();
+            string message = _packet.ReadString();
+
+            ServerSend.SendMessage(username, message);
 
         }
+
     }
 }

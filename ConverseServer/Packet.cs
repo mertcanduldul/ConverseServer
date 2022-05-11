@@ -12,7 +12,9 @@ namespace Server
         spawnPlayer,
         playerPosition,
         playerRotation,
-        playerMovement
+        playerMovement,
+        animator,
+        message
 
     }
 
@@ -23,7 +25,9 @@ namespace Server
         spawnPlayer,
         playerPosition,
         playerRotation,
-        playerMovement
+        playerMovement,
+        animator,
+        message
     }
 
 
