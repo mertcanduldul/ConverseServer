@@ -112,14 +112,14 @@ namespace Server
             }
         }
 
-        public static void SendMessage(string _username,string _message)
+        public static void SendMessage(string _username, string _message)
         {
             using (Packet _packet = new Packet((int)ServerPackets.message))
             {
                 _packet.Write(_username);
                 _packet.Write(_message);
 
-                SendUDPDataToAll(_packet);
+                SendTCPDataToAll(_packet);
             }
         }
 
