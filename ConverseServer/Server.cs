@@ -118,7 +118,8 @@ namespace Server
             {
                 { (int)ClientPackets.welcomeReceived,ServerHandle.WelcomeReceived},
                 { (int)ClientPackets.playerMovement,ServerHandle.PlayerMovements},
-                { (int)ClientPackets.message,ServerHandle.ReadMessageFromClient}
+                { (int)ClientPackets.message,ServerHandle.ReadMessageFromClient},
+                { (int)ClientPackets.danceMusic,ServerHandle.DanceMusic}
 
             };
             Console.WriteLine("Initialized packets.");

@@ -22,17 +22,12 @@ namespace Server
 
         public static void PlayerMovements(int _fromClient, Packet _packet)
         {
-            bool[] _inputs = new bool[_packet.ReadInt()];
 
-            for (int i = 0; i < _inputs.Length; i++)
-            {
-                _inputs[i] = _packet.ReadBool();
-            }
-            Quaternion rotation = _packet.ReadQuaternion();
             Vector3 position = _packet.ReadVector3();
+            Quaternion rotation = _packet.ReadQuaternion();
             int animatorState = _packet.ReadInt();
 
-            Server.clients[_fromClient].player.SetInputs(_inputs, rotation,position,animatorState);
+            Server.clients[_fromClient].player.SetMovements(position, rotation, animatorState);
         }
 
         public static void ReadMessageFromClient(int _fromClient, Packet _packet)
@@ -42,6 +37,11 @@ namespace Server
 
             ServerSend.SendMessage(username, message);
 
+        }
+
+        public static void DanceMusic(int _fromClient, Packet _packet)
+        {
+            ServerSend.DanceMusic(_packet.ReadInt());
         }
 
     }

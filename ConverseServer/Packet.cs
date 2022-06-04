@@ -14,7 +14,8 @@ namespace Server
         playerRotation,
         playerMovement,
         animator,
-        message
+        message,
+        danceMusic
 
     }
 
@@ -27,7 +28,8 @@ namespace Server
         playerRotation,
         playerMovement,
         animator,
-        message
+        message,
+        danceMusic
     }
 
 

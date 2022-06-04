@@ -56,7 +56,7 @@ namespace Server
             {
                 if (i != _exceptClient)
                 {
-                    Server.clients[i].udp.SendData(_packet);
+                    Server.clients[i]?.udp.SendData(_packet);
                 }
 
             }
@@ -120,6 +120,16 @@ namespace Server
                 _packet.Write(_message);
 
                 SendTCPDataToAll(_packet);
+            }
+        }
+
+        public static void DanceMusic(int _id)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.danceMusic))
+            {
+                _packet.Write(_id);
+
+                SendUDPDataToAll(_packet);
             }
         }
 

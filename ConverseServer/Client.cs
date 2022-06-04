@@ -26,6 +26,7 @@ namespace Server
         {
             player = new Player(id, _playerName, new Vector3(0, 0, 127));
 
+
             foreach (Client _client in Server.clients.Values)
             {
                 if (_client.player != null)
@@ -50,6 +51,8 @@ namespace Server
         {
             Console.WriteLine($"{tcp.socket.Client.RemoteEndPoint} has disconnected");
 
+            Server.clients.Remove(id);
+            //tüm herkesten karakterin modelinin destroy komutu çağırılacak.
             player = null;
             tcp.Disconnect();
             udp.Disconnect();
