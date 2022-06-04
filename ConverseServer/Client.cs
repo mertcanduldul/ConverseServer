@@ -51,8 +51,9 @@ namespace Server
         {
             Console.WriteLine($"{tcp.socket.Client.RemoteEndPoint} has disconnected");
 
-            Server.clients.Remove(id);
-            //tüm herkesten karakterin modelinin destroy komutu çağırılacak.
+            Server.clients[id].tcp.socket.Client = null;
+            ServerSend.DestroyPlayer(id);
+
             player = null;
             tcp.Disconnect();
             udp.Disconnect();

@@ -133,6 +133,15 @@ namespace Server
             }
         }
 
+        public static void DestroyPlayer(int _id)
+        {
+            using (Packet _packet = new Packet((int)ServerPackets.destroyPlayer))
+            {
+                _packet.Write(_id);
+                SendUDPDataToAll(_id, _packet);
+            }
+        }
+
         #endregion
     }
 }
